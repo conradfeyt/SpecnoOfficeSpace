@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "specno-office-space": {
+      "hosting": {
+        "specno-office-space": [
+          "specno-office-space"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "specno-office-space"
+  }
+}

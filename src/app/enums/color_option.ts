@@ -1,4 +1,4 @@
-export enum colorOptions {
+export enum colorOption {
     blue = '#0072E8',
     green = '#00B402',
     violet = '#8338EC',

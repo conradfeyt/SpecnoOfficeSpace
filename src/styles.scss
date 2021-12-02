@@ -66,6 +66,45 @@ h6 {
   color: #484954;
 }
 
+button.mat-button {
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+  min-width: 12rem;
+  border-radius: 3rem;
+  padding: 0.3rem 3rem;
+  margin-top: 1rem;
+  background: #f8fafc;
+  color: #489dda;
+  &.mat-primary {
+    background: #489dda;
+    color: white;
+  }
+  &.mat-warn {
+    background: #f44336;
+    color: white;
+  }
+}
+
+.mat-dialog-container {
+  background: #f8fafc;
+  position: relative;
+  border-radius: 10px;
+  header .mat-button-focus-overlay {
+    display: none;
+  }
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  padding: 0 0 0 0.75rem !important;
+  border-radius: 5px !important;
+  background-color: #fff;
+}
+
 .mat-body,
 .mat-body-1,
 .mat-typography {

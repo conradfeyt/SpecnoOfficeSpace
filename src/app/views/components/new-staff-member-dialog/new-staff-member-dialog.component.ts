@@ -75,7 +75,7 @@ export class NewStaffMemberDialogComponent implements OnInit {
     var tempMember = new StaffMember({
       id: this.data.memberId,
       firstName: this.myForm.get('firstName')!.value,
-      lastName: this.myForm.get('firstName')!.value,
+      lastName: this.myForm.get('lastName')!.value,
       avatar: this.avatar
     });
 

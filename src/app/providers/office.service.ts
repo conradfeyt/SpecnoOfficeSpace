@@ -1,12 +1,10 @@
 import { Injectable} from '@angular/core';
-import { Avatar } from '../enums/avatar';
-import { Office, OfficeInterface, } from '../models/office_model';
+import { Office, } from '../models/office_model';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 import { StaffMember, } from '../models/staff_model';
-import { initializeApp } from '@angular/fire/app';
 @Injectable({
     providedIn: 'root'
 })
@@ -25,7 +23,7 @@ export class OfficeService {
             this.offices.subscribe((value) => {
                 this._offices = value;
             });
-            
+
     }
     public init(): void {
         this.officesCollection = this.store!.collection<Office>('Offices');

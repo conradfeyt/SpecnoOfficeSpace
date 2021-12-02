@@ -1,0 +1,27 @@
+:host {
+  max-width: 500px;
+  margin: 0 auto;
+  display: block;
+}
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 5px;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 1.5rem;
+  .back-button {
+    position: absolute;
+    align-self: flex-start;
+    left: 0;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+}

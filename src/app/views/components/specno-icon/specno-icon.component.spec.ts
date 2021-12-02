@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OfficeListComponent } from './office-list.component';
+import { SpecnoIconComponent } from './specno-icon.component';
 
-describe('OfficeListComponent', () => {
-  let component: OfficeListComponent;
-  let fixture: ComponentFixture<OfficeListComponent>;
+describe('SpecnoIconComponent', () => {
+  let component: SpecnoIconComponent;
+  let fixture: ComponentFixture<SpecnoIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OfficeListComponent ]
+      declarations: [ SpecnoIconComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OfficeListComponent);
+    fixture = TestBed.createComponent(SpecnoIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

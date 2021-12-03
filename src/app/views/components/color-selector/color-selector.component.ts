@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Colors } from 'src/app/enums/colors';
 import { Output, EventEmitter } from '@angular/core';
 
@@ -7,18 +7,16 @@ import { Output, EventEmitter } from '@angular/core';
   templateUrl: './color-selector.component.html',
   styleUrls: ['./color-selector.component.scss']
 })
-export class ColorSelectorComponent implements OnInit {
-  colors = Colors;
-
+export class ColorSelectorComponent {
+  
   @Output() newColorSelected = new EventEmitter<string>();
   @Input() selectedColor: string| undefined;
   @Input() error: boolean | undefined;
+  colors = Colors;
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  select(color:string) {
+  public select(color:string) {
     this.error = false;
     this.selectedColor = color;
     this.newColorSelected.emit(this.selectedColor);

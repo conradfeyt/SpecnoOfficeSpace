@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-side-color-bar',
@@ -6,12 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./side-color-bar.component.scss']
 })
 
-export class SideColorBarComponent implements OnInit {
+export class SideColorBarComponent {
 
   @Input() baseColor: string | undefined;
-  constructor() { 
-  }
-  ngOnInit(): void {
-  }
+  constructor() {}
 
 }

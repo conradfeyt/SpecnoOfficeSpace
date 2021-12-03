@@ -5,13 +5,15 @@
 <ng-container *ngIf="offices == undefined">
     loading
 </ng-container>
+
 <ng-container *ngIf="offices == []">
-    No offices
+    No offices added.
 </ng-container>
-<ng-container *ngIf="offices">
+
+<ng-container *ngIf="offices && offices != []">
     <app-office-card  *ngFor="let office of offices" [thisOffice]="office"></app-office-card> 
 </ng-container>
 
-<button  (click)="navigate()" mat-fab color="primary" aria-label="Example icon button with a delete icon"> 
+<button  (click)="navigate()" mat-fab color="primary"> 
    <app-specno-icon [icon]="icons.plus"></app-specno-icon>
 </button>

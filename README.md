@@ -1,27 +1,33 @@
 # SpecnoOfficeSpace
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
+> ## This project was implemented with :
+>
+> - [node](https://nodejs.org/en/download/) version 16.13.0
+> - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8.1.0
+> - [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3
+> - [firebase-tools](https://firebase.google.com/docs/cli) version 9.23.0
+
+## Getting Started
+
+1. Make sure to install the correct versions of `node` and `npm`.
+2. Clone this repository into your desired location.
+3. Open your CLI in the location of the newly cloned repo.
+4. Run `npm install -g firebase-tools` to install firebase tools globally.
+5. Run `npm install` while in the project directory to install local project dependancies.
+6. Once once this is complete, its time to setup an firebase project.
+   1. Go to [Firebase Console](https://console.firebase.google.com/).
+   2. Create a new project with the name "Specno Office Space" or any name you desire.
+   3. Follow the guide [here](https://developers.google.com/codelabs/building-a-web-app-with-angular-and-firebase#9) to setup the project in firebase. Skip the first step as this should be handled by `npm install`
+   4. Once your project has been created on the firebase console, run `firebase init` and following the prompts 5. This Project only utilizes firebase _hosting_ and _firestore_, but you can choose all options if you're lazy.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Code scaffolding
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Icon } from 'src/app/enums/icons';
-import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
-
-import { NewStaffMemberDialogComponent } from '../../components/new-staff-member-dialog/new-staff-member-dialog.component';
-import { Office } from 'src/app/models/office_model';
-
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { OfficeSnackBarComponent } from '../../components/office-snack-bar/office-snack-bar.component'; 
+
+import { Icon } from 'src/app/enums/icons';
+import { Office } from 'src/app/models/office_model';
 import { OfficeService } from 'src/app/providers/office.service';
+import { NewStaffMemberDialogComponent } from '../../components/new-staff-member-dialog/new-staff-member-dialog.component';
+import { OfficeSnackBarComponent } from '../../components/office-snack-bar/office-snack-bar.component'; 
+
 
 @Component({
   selector: 'app-office-detail',
@@ -24,15 +24,13 @@ export class OfficeDetailComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog, 
-    private _snackBar: MatSnackBar,
-    public route: 
-    ActivatedRoute,
-    public router: 
-    Router, 
-    private officeService: OfficeService
+    private snackBar: MatSnackBar,
+    private officeService: OfficeService,
+    public route: ActivatedRoute,
+    public router: Router, 
   ) {
-    this.officeId = this.route.snapshot.paramMap.get('id') ?? undefined;
-    this.officeService.offices.subscribe(value=>{
+    this.officeId = this.route.snapshot.paramMap.get('id') ?? undefined; //get office from router
+    this.officeService.offices.subscribe(value=>{ //subscriber to office service and update page onchange
       if(this.officeId) {
         this.thisOffice = value.find((_office)=>{return _office.id == this.officeId});
       }
@@ -43,15 +41,17 @@ export class OfficeDetailComponent implements OnInit {
 
     if(this.officeId && !this.thisOffice) {
       this.isLoading = true;
-      this.thisOffice = await this.officeService.getOfficeById(this.officeId);
+      this.thisOffice = await this.officeService.getOfficeById(this.officeId); //initial fetch of office details
       this.isLoading = false;
     }
   }
-  goBack() {
+
+  public goBack() {
     this.router.navigateByUrl('/');
   }
 
-  openDialog() {
+  public openDialog() {
+
     const dialogRef = this.dialog.open(NewStaffMemberDialogComponent, {
       width: 'calc(100% - 2rem)',
       maxWidth: '350px',
@@ -60,7 +60,7 @@ export class OfficeDetailComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result == true) {
-        this._snackBar.openFromComponent(OfficeSnackBarComponent, {
+        this.snackBar.openFromComponent(OfficeSnackBarComponent, {
           data:{
             message: "User added"
           },
@@ -68,6 +68,7 @@ export class OfficeDetailComponent implements OnInit {
         });
       }
     });
+    
   }
 
 }

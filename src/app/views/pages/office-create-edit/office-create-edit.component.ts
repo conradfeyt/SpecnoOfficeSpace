@@ -1,24 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common'
-import { Icon } from 'src/app/enums/icons';
 import { FormControl, Validators } from '@angular/forms';
-import { Office } from 'src/app/models/office_model';
 import { MatDialog } from '@angular/material/dialog';
-import { OfficeDeleteDialogComponent } from '../../components/office-delete-dialog/office-delete-dialog.component';
-import { OfficeService } from 'src/app/providers/office.service';
-import { StaffMember } from 'src/app/models/staff_model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OfficeSnackBarComponent } from '../../components/office-snack-bar/office-snack-bar.component';
 import { FormGroup } from '@angular/forms';
+
+import { Icon } from 'src/app/enums/icons';
+import { Office } from 'src/app/models/office_model';
+import { OfficeDeleteDialogComponent } from '../../components/office-delete-dialog/office-delete-dialog.component';
+import { OfficeService } from 'src/app/providers/office.service';
+import { StaffMember } from 'src/app/models/staff_model';
 @Component({
   selector: 'app-office-create-edit',
   templateUrl: './office-create-edit.component.html',
   styleUrls: ['./office-create-edit.component.scss']
 })
 export class OfficeCreateEditComponent implements OnInit {
+
   officeId: string | null;
   icons = Icon;
+  color : string = '';
+  officeExists = false;
+  isLoading= false;
+  order : number = 0;
+  members: StaffMember[] = [];
+  showColorError = false;
+
   myForm = new FormGroup({
     name : new FormControl(),
     address : new FormControl(),
@@ -26,19 +35,13 @@ export class OfficeCreateEditComponent implements OnInit {
     contact : new FormControl(),
     capacity : new FormControl()
   });
-  color : string = '';
-  officeExists = false;
-  isLoading= false;
-  order : number = 0;
-  members: StaffMember[] = [];
-  showColorError = false;
   
   constructor(
     public route: ActivatedRoute, 
     public router: Router, 
     public location : Location, 
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar,
+    private snackBar: MatSnackBar,
     private  officeService : OfficeService
   ) { 
     this.officeId = this.route.snapshot.paramMap.get('id');
@@ -63,10 +66,12 @@ export class OfficeCreateEditComponent implements OnInit {
     }
   }
 
-  selectColor(newColor: string) {
+  public selectColor(newColor: string) {
     this.color = newColor;
   }
-  openDeleteDialog() {
+
+  public openDeleteDialog() {
+
     const dialogRef = this.dialog.open(OfficeDeleteDialogComponent, {
       width: 'calc(100% - 2rem)',
       maxWidth: '345px',
@@ -76,35 +81,40 @@ export class OfficeCreateEditComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-        if(result) {
-          this.officeService.deleteOffice(this.officeId!);
-          this._snackBar.openFromComponent(OfficeSnackBarComponent, {
-            data:{
-              message: `${this.myForm.get('name')!.value} Deleted`
-            },
-            duration: 2000,
-          });
-          this.goBack();
-        }
+      if(result) { // true for delete
+        this.officeService.deleteOffice(this.officeId!);
+        this.snackBar.openFromComponent(OfficeSnackBarComponent, {
+          data:{
+            message: `${this.myForm.get('name')!.value} Deleted`
+          },
+          duration: 2000,
+        });
+        this.goBack();
+      }
     });
+
   }
 
   public errorHandling = (control: string, error: string) => {
     return this.myForm.controls[control].hasError(error);
   }
-  createOffice() {
+
+  public createOffice() {
     if(this.color == '' || !this.myForm.valid) {
+      //validate input
       this.myForm.markAllAsTouched();
       if (this.color == '') {
         this.showColorError = true;
       }
       return;
     }
+
     if(!this.myForm.valid) {
       this.myForm.markAllAsTouched();
       return;
     }
-    this.showColorError = false;
+
+    this.showColorError = false; // remove error message if no longer relevant
 
     let tempOffice = new Office({id: this.officeId ?? '',
       name: this.myForm.get('name')!.value,
@@ -121,17 +131,18 @@ export class OfficeCreateEditComponent implements OnInit {
       ? this.officeService.updateOffice(tempOffice)
       : this.officeService.addOffice(tempOffice);
 
-          this._snackBar.openFromComponent(OfficeSnackBarComponent, {
-            data:{
-              message: `${this.myForm.get('name')!.value} ${this.officeId ? 'updated' : 'added'}`
-            },
-            duration: 2000,
-          });
+    this.snackBar.openFromComponent(OfficeSnackBarComponent, {
+      data:{
+        message: `${this.myForm.get('name')!.value} ${this.officeId ? 'updated' : 'added'}`
+      },
+      duration: 2000,
+    });
+
     this.goBack();
 
   }
 
-  goBack() {
+  public goBack() {
     this.router.navigateByUrl('/');
   }
 

@@ -1,11 +1,8 @@
 import { Component, Inject } from '@angular/core';
-
-import { OfficeService } from 'src/app/providers/office.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 import { Icon } from 'src/app/enums/icons';
-
-
-interface DialogData { 
+interface DialogData { // own dialogInterface as it doesn't comform to other two dialogs
   name: string
 }
 
@@ -15,9 +12,10 @@ interface DialogData {
   styleUrls: ['./office-delete-dialog.component.scss']
 })
 export class OfficeDeleteDialogComponent {
+  
   icons = Icon;
+
   constructor(
-    private officeService: OfficeService,
     public dialogRef: MatDialogRef<OfficeDeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}

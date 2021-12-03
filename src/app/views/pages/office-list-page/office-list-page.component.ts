@@ -12,13 +12,14 @@ import { OfficeService } from 'src/app/providers/office.service';
 export class OfficeListPageComponent implements OnInit {
   icons = Icon;
   offices : Office[] | undefined;
+
   constructor(public router: Router, private officeService: OfficeService) { }
 
-  navigate() {
+  public navigate() {
     this.router.navigateByUrl('/add-office')
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.officeService.offices.subscribe(value=>{
         this.offices = value;
     })

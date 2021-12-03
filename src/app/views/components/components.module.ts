@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
@@ -16,7 +17,6 @@ import { StaffMemberListEntryComponent } from './staff-member-list-entry/staff-m
 import { SpecnoIconComponent } from './specno-icon/specno-icon.component';
 import { SideColorBarComponent } from './side-color-bar/side-color-bar.component';
 import { NewStaffMemberDialogComponent } from './new-staff-member-dialog/new-staff-member-dialog.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { StaffOptionDialogComponent } from './staff-option-dialog/staff-option-dialog.component';
 import { OfficeDeleteDialogComponent } from './office-delete-dialog/office-delete-dialog.component';
 import { UtilsModule, } from 'src/app/utils/utils.module';
@@ -36,7 +36,6 @@ import { OfficeSnackBarComponent } from './office-snack-bar/office-snack-bar.com
     StaffOptionDialogComponent,
     OfficeDeleteDialogComponent,
     OfficeSnackBarComponent,
-
   ],
   imports: [
     CommonModule,
@@ -57,7 +56,6 @@ import { OfficeSnackBarComponent } from './office-snack-bar/office-snack-bar.com
     StaffMemberListEntryComponent,
     SpecnoIconComponent,
     OfficeSnackBarComponent
-
   ]
 })
 export class ComponentsModule { }

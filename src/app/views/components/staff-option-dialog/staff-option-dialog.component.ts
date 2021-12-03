@@ -1,9 +1,6 @@
 import { Component} from '@angular/core';
-import { OfficeService } from 'src/app/providers/office.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Icon } from 'src/app/enums/icons';
-
-
 
 @Component({
   selector: 'app-staff-option-dialog',
@@ -15,8 +12,8 @@ export class StaffOptionDialogComponent {
 
   shouldDelete : boolean = false;
   icons = Icon;
+
   constructor(
-    private officeService: OfficeService,
     public dialogRef: MatDialogRef<StaffOptionDialogComponent>,
   ) {}
 

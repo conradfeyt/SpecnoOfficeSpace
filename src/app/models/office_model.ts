@@ -13,7 +13,6 @@ export interface OfficeInterface {
 }
 
 export class Office {
-    // protected static instance: Office | null = null;
 
     public id: string;
     public name: string | undefined;

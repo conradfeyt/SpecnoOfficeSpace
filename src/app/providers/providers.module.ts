@@ -11,6 +11,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 })
 
 export class ProvidersModule {
+
  constructor(@Optional() @SkipSelf() parentModule?: ProvidersModule) {
     if (parentModule) {
       throw new Error(
@@ -26,4 +27,5 @@ export class ProvidersModule {
       ]
     };
   }
+  
 }

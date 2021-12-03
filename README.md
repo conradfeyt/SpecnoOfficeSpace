@@ -27,7 +27,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Build
 
-Run `ng build` or preferablt `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build` or preferably `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Code scaffolding
 

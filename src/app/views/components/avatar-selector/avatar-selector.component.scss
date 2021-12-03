@@ -21,6 +21,7 @@
     }
   }
 }
+
 .mat-error ~ .avatar-container:nth-child(8) {
   margin-left: 13%;
 }
@@ -41,11 +42,13 @@
     width: 100%;
   }
 }
+
 .break,
 .mat-error,
 h2 {
   flex-basis: 100%;
 }
+
 h2 {
   font-weight: 500 !important;
 }

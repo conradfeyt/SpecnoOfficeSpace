@@ -1,33 +1,30 @@
 import { Injectable} from '@angular/core';
-import { Office, } from '../models/office_model';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
-
+import { Office, } from '../models/office_model';
 import { StaffMember, } from '../models/staff_model';
+
 @Injectable({
     providedIn: 'root'
 })
 export class OfficeService {
-    // private _members: StaffMember[];
-    private _offices: Office[] =[];
 
+    private _offices: Office[] =[];
     private officesCollection! : AngularFirestoreCollection<Office>;
     offices!: Observable<Office[]>;
    
-
     constructor(private store : AngularFirestore) {
+        //initialize firebase value change subscription 
 
-            this.officesCollection = store!.collection<Office>('Offices');
-            this.offices = this.officesCollection.valueChanges({ idField: 'id' });
-            this.offices.subscribe((value) => {
-                this._offices = value;
-            });
+        this.officesCollection = store!.collection<Office>('Offices');
 
-    }
-    public init(): void {
-        this.officesCollection = this.store!.collection<Office>('Offices');
-        this.offices = this.officesCollection.valueChanges();
+        this.offices = this.officesCollection.valueChanges({ idField: 'id' });
+
+        this.offices.subscribe((value) => {
+            this._offices = value;
+        });
+
     }
 
     public async getOfficeById(officeId: string) : Promise<Office | undefined> {

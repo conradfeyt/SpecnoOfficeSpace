@@ -5,6 +5,7 @@
   border-radius: 0.5rem;
   overflow: hidden;
 }
+
 @mixin body-text {
   font-size: 0.8rem;
   color: #484954;
@@ -37,6 +38,7 @@ ul {
   padding: 1rem 1rem 0;
   border-radius: 0;
   box-shadow: none;
+
   .hovered {
     background: #f8fafc;
   }

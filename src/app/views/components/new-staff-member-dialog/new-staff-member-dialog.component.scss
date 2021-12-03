@@ -3,6 +3,7 @@
     width: 100%;
   }
 }
+
 header {
   display: flex;
   align-items: center;
@@ -14,9 +15,6 @@ header {
   }
   .close-button {
     margin-right: -0.75rem;
-    // position: absolute;
-    // top: 24px;
-    // right: 24px;
   }
   h2 {
     margin-bottom: 0;

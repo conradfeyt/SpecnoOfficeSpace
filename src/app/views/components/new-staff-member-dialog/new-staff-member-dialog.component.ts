@@ -22,6 +22,7 @@ export class NewStaffMemberDialogComponent implements OnInit {
   avatar =  '';
   isExistingMember = false;
   showAvatarError = false;
+
   myForm = new FormGroup({
     firstName : new FormControl(),
     lastName : new FormControl()
@@ -35,8 +36,10 @@ export class NewStaffMemberDialogComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.data.memberId) {
-      let tempMember = this.officeService.getMemberById(this.data.officeId, this.data.memberId);
+      //if data is passed through dialog data, implies the staff member exists
+      let tempMember = this.officeService.getMemberById(this.data.officeId, this.data.memberId); //get member info from service
       if (tempMember) {
+        //set input values
         this.myForm.get('firstName')!.setValue(tempMember.firstName);
         this.myForm.get('lastName')!.setValue(tempMember.lastName);
         this.avatar = tempMember.avatar;
@@ -55,6 +58,7 @@ export class NewStaffMemberDialogComponent implements OnInit {
   }
 
   public moveNext() {
+    //navigate to second step if no errors
     if(!this.myForm.valid) {
       this.myForm.markAllAsTouched();
       return;
@@ -63,15 +67,18 @@ export class NewStaffMemberDialogComponent implements OnInit {
   }
 
   public moveBack() {
+    // navigate to previous step
     this.stepIndex = 1;
   }
 
-
   public createMember() {
+
     if (this.avatar == '') {
+      //validate that avatar selected
       this.showAvatarError = true;
       return;
     }
+
     var tempMember = new StaffMember({
       id: this.data.memberId,
       firstName: this.myForm.get('firstName')!.value,
@@ -82,5 +89,6 @@ export class NewStaffMemberDialogComponent implements OnInit {
     if(this.data.officeId) {
       this.officeService.updateMember(this.data.officeId, tempMember);
     }
+
   }
 }

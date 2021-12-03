@@ -36,12 +36,12 @@
     </mat-dialog-content>
 </ng-container>
 
-<div [ngClass]="{'step-one': stepIndex == 1, 'step-two': stepIndex == 2}" class="selection-indicator">
-</div>
+<div [ngClass]="{'step-one': stepIndex == 1, 'step-two': stepIndex == 2}" class="selection-indicator"></div>
 
 <div class="center"  *ngIf="stepIndex == 1">
     <button (click)="moveNext()" mat-button color="primary">Next</button>
 </div>
+
 <div class="center"  *ngIf="stepIndex == 2">
     
     <button *ngIf="avatar ==''" (click)="createMember()" mat-button color="primary">{{isExistingMember ? 'Update' : 'Add'}}  Staff Member</button>

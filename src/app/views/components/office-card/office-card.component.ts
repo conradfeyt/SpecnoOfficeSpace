@@ -1,17 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Icon } from 'src/app/enums/icons';
-import { Colors } from 'src/app/enums/colors';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { Icon } from 'src/app/enums/icons';
+import { Colors } from 'src/app/enums/colors';
 import { Office } from 'src/app/models/office_model';
-import { OfficeService } from 'src/app/providers/office.service';
 
 @Component({
   selector: 'app-office-card',
   templateUrl: './office-card.component.html',
   styleUrls: ['./office-card.component.scss']
 })
-export class OfficeCardComponent implements OnInit {
+export class OfficeCardComponent {
+
+  @Input() thisOffice: Office| undefined;
+
   panelOpenState = false;
   icons = Icon;
   colors = Colors;
@@ -19,18 +21,13 @@ export class OfficeCardComponent implements OnInit {
   titleHovering = false;
   descriptionHovering = false;
 
-  @Input() thisOffice: Office| undefined;
+  constructor(public router: Router) { }
 
-  constructor(public router: Router, private officeService: OfficeService) { }
-  
-  ngOnInit(): void {
-  }
-
-  editOffice() {
+  public editOffice() {
     this.router.navigateByUrl('/edit-office/'+(this.thisOffice?.id ?? 1));
   }
 
-  toggelTitleHovering() {
+  public toggelTitleHovering() {
     this.titleHovering = !this.titleHovering;
   }
 
@@ -39,7 +36,7 @@ export class OfficeCardComponent implements OnInit {
     return Colors[keyTyped].hex;
   }
 
-  navigate() {
+  public navigate() {
     this.router.navigateByUrl('/view-office/'+(this.thisOffice?.id ?? 1));
   }
 

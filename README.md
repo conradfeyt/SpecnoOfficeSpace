@@ -29,6 +29,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build` or preferably `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+
+## Deploy
+
+if hosting is setup correctly, run `firebase deploy` after building to deploy the project to firebase hosting. The deployment source will be read from the `dist/` directory.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
